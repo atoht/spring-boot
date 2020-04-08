@@ -18,6 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class TestController {
 
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+	
 	@GetMapping("/test")
 	public String test1( TestForm form) {
 		log.debug(form.getName());
