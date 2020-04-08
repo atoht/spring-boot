@@ -5,6 +5,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-sdfsdf
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+	type: "get",
+	data: "",
+		url: "/",
+		contentType:"application/json",//这里设置很重要
+	    dataType: "json",
+		success: function(data) {
+		}
+});
+</script>
 </body>
 </html>
