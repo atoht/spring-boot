@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,13 +15,13 @@ import com.example.demo.form.TestForm;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RestController
+@Controller
 public class TestController {
 
 	@GetMapping("/test")
 	public String test1( TestForm form) {
 		log.debug(form.getName());
-		return "";
+		return "NewFile";
 	}
 	
 	@PostMapping("/testPost")
