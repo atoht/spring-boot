@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,22 +14,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.form.TestForm;
+import com.example.demo.mapper.Registered;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+//@RestController
 @Controller
 public class TestController {
 
+	@Autowired
+	private Registered registered;
+	@Autowired
+	PasswordEncoder encoder;
+	
 	@GetMapping("/")
 	public String index() {
+//		userDetailsService.loadUserByUsername("");
+//		return token;
 		return "index";
 	}
 	
-	@GetMapping("/test")
-	public String test1( TestForm form) {
-		log.debug(form.getName());
-		return "NewFile";
+	@GetMapping("/success")
+	public String test1( ) {
+//		log.debug(form.getName());
+		return "success";
+	}
+	
+	
+	@PostMapping("/registered")
+	public String registered(String name, String password) {
+		registered.insert(name, encoder.encode(password));
+		return "success";
 	}
 	
 	@PostMapping("/testPost")
