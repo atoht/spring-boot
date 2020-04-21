@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,54 +28,35 @@ import com.example.demo.Authentication.DemoAuthenticationFailureHandler;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService userDetailsService;
-	@Autowired
-	private AuthenticationSuccessHandler demoAuthenticationSuccessHandler;
-	@Autowired
-	private DemoAuthenticationFailureHandler demoAuthenticationFailureHandler;
+	private UserDetailsService authUserService;
 	
 	// 密码明文加密方式配置
     @Bean
-    public PasswordEncoder myEncoder() {
+    public PasswordEncoder passwordEncoder() {
       return new BCryptPasswordEncoder();
     }
     
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-//		http.authorizeRequests().antMatchers("/").permitAll()
-//			.antMatchers("/success/**").hasRole("USER");
-		http.formLogin()
-			.loginPage("/")
-			.loginProcessingUrl("/login_test")
-			.successHandler(demoAuthenticationSuccessHandler)
-			.failureHandler(demoAuthenticationFailureHandler)
-			.and()
-			.sessionManagement()
-			.invalidSessionUrl("/sessionTimeOut")
-			.and()
-			.cors().and()
-            .csrf().disable()
-			.authorizeRequests().antMatchers("/","/login_test","/sessionTimeOut", "/oauth/token").permitAll()
-			.anyRequest()
-			.authenticated();
-//	    http.csrf().disable();
-//	    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-		http.logout();
-		
-	}
-
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(userDetailsService);
-//	}
-//
 //	@Bean
-//	@Override
-//	public AuthenticationManager authenticationManagerBean() throws Exception {
-//		// TODO Auto-generated method stub
-//		return super.authenticationManagerBean();
+//	public AuthenticationProvider authenticationProvider() {
+//
+//	    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+//	    authenticationProvider.setUserDetailsService(authUserService);
+//	    authenticationProvider.setPasswordEncoder(passwordEncoder());
+//	    return authenticationProvider;
 //	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(authUserService);
+//		auth.authenticationProvider(authenticationProvider());
+	}
+//
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		// TODO Auto-generated method stub
+		return super.authenticationManagerBean();
+	}
 
 //	@Override
 //	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

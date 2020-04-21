@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestRestController {
 
 	@Autowired
-	UserDetailsService userDetailsService;
+	UserDetailsService authUserService;
 	
 	@PostMapping("/login_test")
 	public String login(String username, String password) {
-		userDetailsService.loadUserByUsername(username);
+		authUserService.loadUserByUsername(username);
 		return "login_test";
 	}
 	

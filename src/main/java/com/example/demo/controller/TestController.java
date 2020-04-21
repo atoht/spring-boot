@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.form.TestForm;
-import com.example.demo.mapper.Registered;
+//import com.example.demo.mapper.Registered;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,8 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class TestController {
 
-	@Autowired
-	private Registered registered;
+//	@Autowired
+//	private Registered registered;
 	@Autowired
 	PasswordEncoder encoder;
 	
@@ -36,15 +37,22 @@ public class TestController {
 	}
 	
 	@GetMapping("/success")
-	public String test1( ) {
+	@ResponseBody
+	public String success( ) {
 //		log.debug(form.getName());
 		return "success";
+	}
+	@GetMapping("/success2")
+	@ResponseBody
+	public String success2( ) {
+//		log.debug(form.getName());
+		return "success2";
 	}
 	
 	
 	@PostMapping("/registered")
 	public String registered(String name, String password) {
-		registered.insert(name, encoder.encode(password));
+//		registered.insert(name, encoder.encode(password));
 		return "success";
 	}
 	
