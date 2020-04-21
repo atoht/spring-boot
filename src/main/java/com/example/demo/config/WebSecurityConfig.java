@@ -68,12 +68,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //		auth.userDetailsService(userDetailsService);
 //	}
 //
-//	@Bean
-//	@Override
-//	public AuthenticationManager authenticationManagerBean() throws Exception {
-//		// TODO Auto-generated method stub
-//		return super.authenticationManagerBean();
-//	}
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		// TODO Auto-generated method stub
+		return super.authenticationManagerBean();
+	}
 
 //	@Override
 //	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

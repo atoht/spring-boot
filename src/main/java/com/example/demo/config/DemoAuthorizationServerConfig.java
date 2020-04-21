@@ -18,8 +18,8 @@ public class DemoAuthorizationServerConfig extends AuthorizationServerConfigurer
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-//	@Autowired
-//	private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -28,12 +28,12 @@ public class DemoAuthorizationServerConfig extends AuthorizationServerConfigurer
 		.authorizedGrantTypes("password", "refresh_token")
 		.redirectUris("http://example.com");
 	}
-//	@Override
-//	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-//		endpoints
-//			.authenticationManager(authenticationManager)
-//			.tokenStore(tokenStore());
-//	}
+	@Override
+	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		endpoints
+			.authenticationManager(authenticationManager)
+			.tokenStore(tokenStore());
+	}
 	
 	@Bean
 	public TokenStore tokenStore() {
