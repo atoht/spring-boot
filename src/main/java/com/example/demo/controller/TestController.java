@@ -42,7 +42,7 @@ public class TestController {
 //		log.debug(form.getName());
 		return "success";
 	}
-	@GetMapping("/success2")
+	@PostMapping("/success2")
 	@ResponseBody
 	public String success2( ) {
 //		log.debug(form.getName());

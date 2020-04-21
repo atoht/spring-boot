@@ -27,8 +27,8 @@ import com.example.demo.Authentication.DemoAuthenticationFailureHandler;
 //@Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService authUserService;
+//	@Autowired
+//	private UserDetailsService authUserService;
 	
 	// 密码明文加密方式配置
     @Bean
@@ -36,20 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       return new BCryptPasswordEncoder();
     }
     
-//	@Bean
-//	public AuthenticationProvider authenticationProvider() {
-//
-//	    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-//	    authenticationProvider.setUserDetailsService(authUserService);
-//	    authenticationProvider.setPasswordEncoder(passwordEncoder());
-//	    return authenticationProvider;
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(userDetailsService);
 //	}
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(authUserService);
-//		auth.authenticationProvider(authenticationProvider());
-	}
 //
 	@Bean
 	@Override
@@ -57,6 +47,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO Auto-generated method stub
 		return super.authenticationManagerBean();
 	}
+
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(authUserService);
+////		auth.authenticationProvider(authenticationProvider());
+//	}
+//
 
 //	@Override
 //	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

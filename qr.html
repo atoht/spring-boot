@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css"> -->
+    <style>
+        /* body {
+            position:relative;
+        } */
+        /* html, body {
+        min-width: 0;
+        width: 220mm; 
+        height: 140mm;
+    } */
+        .tableTest {
+            /* padding: 0px; */
+            /* width:100px;
+    height:100px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-50px 0 0 -50px; */
+            display:flex; justify-content: center;
+            align-items: center; 
+            /* width: 430px; */
+        }
+        .tableStyle{
+            width: 410px;
+            border-top:2px solid #888888;
+            border-left:2px solid #888888;
+            border-spacing: 0;/*去掉单元格间隙*/
+        }
+        .tableStyle td{
+            /* border: 1px solid #888888; */
+            border-bottom: 2px solid #888888;
+            border-right: 2px solid #888888;
+        }
+        .tableStyle tr:first-child td:first-child {
+            width: 30%;
+            padding: 15px;
+			text-align: center;
+			vertical-align:middle;
+        }
+        .tableStyle tr:first-child td:nth-child(2) {
+            position: relative;
+            /* min-height: calc(100% - 600px); */
+            /* margin-bottom: 20px; */
+            /* margin:0 auto; */
+            height: 18%;
+        }
+        .tableStyle tr:first-child span{ 
+            position:absolute;
+            
+            /* vertical-align:auto; */
+            /* display:inline-table; */
+            /* margin-top: 0px;
+            margin-left: 0px; */
+            /* display: table-cell; */
+            /* margin-left: 10%; */
+        }
+        .tableStyle tr:first-child span:first-child{ 
+            padding-left: 5px;
+            top:0px
+        }
+        .tableStyle tr:first-child td{ 
+            min-height: calc(100% - 100px);
+        }
+        .tableStyle tr:first-child span:nth-child(2) {
+             /* margin-left: 10px; */
+            /*margin-top: 10px; */
+            /* position:absolute; */
+            /* float:left; */
+            /* display: table-cell; */
+            top: 10%;
+            right: 45%;
+            /* width: 50%; */
+            /* padding-left: 50%; */
+            font-size:large;
+            border: medium solid rgb(0, 110, 255); 
+            width: 30px;height: 30px; 
+            text-align: center;
+		    vertical-align: middle;
+            border-radius:5px;
+            /* clear: both; */
+        }
+        .tableStyle tr:nth-child(2) td:first-child {
+            width: 40%;
+        }
+        .tableStyle tr:nth-child(2) td:nth-child(2) {
+            background:linear-gradient(-45deg, transparent 49.5%, black 49.5%, 
+            black 50.5%, 
+            transparent 50.5%);
+        }
+        .tableStyle tr:nth-child(2) td {
+            min-height: calc(100% - 75%);
+            position: relative;
+        }
+        .tableStyle tr:nth-child(2) span:first-child {
+            position:absolute;
+            padding-left: 5px;
+            top: 0px;
+        }
+        .tableStyle tr:nth-child(2) span:nth-child(2) {
+            position:absolute;
+            right: 35%;
+            top: 40%;
+            display: table-cell;
+            font-size:large;
+            border: medium solid rgb(0, 110, 255); 
+            width: 30px;height: 30px; 
+            text-align: center;
+		    vertical-align: middle;
+            border-radius:5px;
+        }
+        .tableStyle tr:nth-child(3) td{
+            position: relative;
+            height: 40px;
+        }
+        .tableStyle tr:nth-child(3) span:first-child{
+            position:absolute;
+            /* right: 40%; */
+            padding-left: 5px;
+            top: 0px;
+            /* vertical-align:middle */
+        }
+        .tableStyle tr:nth-child(3) span:nth-child(2){
+            position:absolute;
+            right: 32%;
+            top: 30%;
+            /* vertical-align:middle */
+        }
+        .tableStyle tr:nth-child(4) td{
+            padding-left: 5px;
+            padding-bottom: 50px;
+        }
+        
+        @media print {
+            @page {
+                /* size: 430px 246px; */
+                size: auto;
+                /* size: 5.5in 8.5in; */
+                size: landscape;
+                /* margin: 0; */
+                /* width: 50em; */
+                /* margin: 2cm; */
+                margin:0;
+                /* size: auto;   auto is the initial value
+        margin: 0mm 10mm 0mm 10mm; */
+                page-break-after:avoid;/* //后面不加空页*/
+            }
+            body { margin-top: 3.6cm; }
+            html, body {
+        min-width: 0;
+        width: 220mm; 
+        /* height: 140mm; */
+    }
+            /* body {transform: scale(1.1);} */
+            body *:not(.printable) {
+                display: none;
+            }
+            .tableTest {
+                display:flex;  
+                justify-content: center;
+                align-items: center; 
+            }
+            .tableStyle{
+                /* position: absolute;   
+                left: 0;   
+                top: 0;   
+                right: 0;
+                bottom: 0;
+                margin:0 auto; */
+                
+            /* width: 100%; */
+            -webkit-print-color-adjust: exact !important;/* 显示颜色 */
+            /* page-break-inside: avoid; */
+            transform: scale(1.8);
+            /* margin: auto 0mm;margin-top:800 */
+            /* height: auto; */
+            }
+} 
+    </style>
+</head>
+<body>
+    <!-- <iframe id="frame" frameborder="0"> -->
+        <div class="card tableTest " >
+            <!-- <div class="card-body"> -->
+                <table class="tableStyle" height="100%">
+                    <tbody >
+                        <tr >
+                            <td rowspan="2" id="qrcode" ></td>
+                            <td colspan="2" ><span>発送予定時間</span><span>1</span></td>
+                        </tr>
+                        <tr >
+                            <td ><span>配送番号</span><span>2</span></td>
+                            <td ><span>個数/個口数</span><span>3</span></td>
+                        </tr>
+                        <tr height="25%">
+                            <td colspan="3"><span>管理番号</span><span>5648 - 8946 - 3165</span></td>
+                        </tr>
+                        <tr height="25%">
+                            <td colspan="3">コメント<br> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- </div> -->
+        </div>
+        <!-- <p>dsfasdfsdf</p> -->
+    <!-- </iframe> -->
+    <!-- <div class="noprint">
+        <p >lsdkjfasjdlfajd</p>
+        <table>
+            <tr><td>sadlfkj</td></tr>
+            <tr><td>sadlfkj</td></tr>
+            <tr><td>sadlfkj</td></tr>
+        </table>
+    </div> -->
+    <div style="text-align:right;width: 960px;margin-top: 20px;">
+        <input id="btnSubmit" type="submit" value="Print" onclick="divPrint();" />
+    </div>
+    <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script> 
+<script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+<script>
+    $('#qrcode').qrcode({
+                render:"canvas",//设置渲染方式 （有两种方式 table和canvas，默认是canvas）  
+                width: 100,//宽度
+                height: 100,//高度
+                correctLevel:0,//纠错等级  
+                // correctLevel : QRErrorCorrectLevel.H,
+                text: "5648 - 8946 - 3165",//生成二维码的文本
+                colorDark : '#000000' , //前景色
+                colorLight : ' #ffffff ' ,
+            });
+            function divPrint() {
+        // Some logic determines which div should be printed...
+        // This example uses div3.
+        $(".tableTest").addClass("printable");
+        $(".tableTest *").addClass("printable");
+        
+        window.print();
+      }
+</script>
+</body>
+</html>
