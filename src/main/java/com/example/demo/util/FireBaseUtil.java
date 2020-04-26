@@ -204,13 +204,6 @@ public class FireBaseUtil {
         System.out.println("主题推送成功: " + response);
     }
     
-    private static String getAccessToken() throws IOException {
-    	  GoogleCredential googleCredential = GoogleCredential
-    	      .fromStream(new ClassPathResource("fcm/test01-c6e32-firebase-adminsdk-7916k-39f3d691a9.json").getInputStream())
-    	      .createScoped(Arrays.asList(SCOPES));
-    	  googleCredential.refreshToken();
-    	  return googleCredential.getAccessToken();
-    	}
     
 //    public void pushMessage(ConsumerRecord<Long, String> consumerRecord) {
 //        try {
